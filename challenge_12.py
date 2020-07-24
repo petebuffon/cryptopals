@@ -1,4 +1,4 @@
-"""Byte-at-a-time ECB decryption (Simple)"""
+"""Byte-at-a-time ECB decryption (Simple)."""
 from base64 import b64decode
 from challenge_6 import chunks
 from challenge_7 import ECB
@@ -7,8 +7,7 @@ from challenge_11 import generate_bytes, detect_ecb
 
 
 def encryption_oracle(your_string):
-    """Concatenates 'your_string' and 'unknown_string', adds PKCS#7 padding, and encrypts the
-    resulting string with AES-128-ECB using a randomally generated key."""
+    """Encryption oracle with text input."""
     unknown_string = b64decode("""Um9sbGluJyBpbiBteSA1LjAKV2l0aCBteSByYWctdG9wIGRvd24gc28gbXkgaGFpci
     BjYW4gYmxvdwpUaGUgZ2lybGllcyBvbiBzdGFuZGJ5IHdhdmluZyBqdXN0IHRvIHNheSBoaQpEaWQgeW91IHN0b3A/IE5vL
     CBJIGp1c3QgZHJvdmUgYnkK""")
@@ -19,7 +18,7 @@ def encryption_oracle(your_string):
 
 
 def detect_blocksize(oracle):
-    """detects blockize of cipher"""
+    """Detect cipher blocksize."""
     n = len(oracle(b""))
     for i in range(1, 101):
         k = len(oracle(b"A"*i))
@@ -33,7 +32,7 @@ def detect_blocksize(oracle):
 
 
 def extract_secret(oracle, keysize):
-    """Extracts secret text from encryption oracle with a known keysize."""
+    """Extract secret text from encryption oracle with a known keysize."""
     plaintext = b""
     # iterate over the blocksize
     for i in range(0, len(oracle(b"")), keysize):

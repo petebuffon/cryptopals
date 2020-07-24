@@ -1,10 +1,11 @@
-"""ECB cut-and-paste"""
+"""ECB cut-and-paste."""
 from challenge_7 import ECB
 from challenge_9 import pkcs7
 from challenge_11 import generate_bytes
 
 
 def parser(ciphertext):
+    """Decrypt and parse ciphertext."""
     encodedtext = ECB(KEY).decrypt(ciphertext)
     encodedtext = strip_padding(encodedtext).decode("utf-8")
     cookie_dict = {}
@@ -15,6 +16,7 @@ def parser(ciphertext):
 
 
 def strip_padding(plaintext):
+    """Strip PKCS#7 padding from plaintext."""
     pad_chrs = b""
     for i in range(1, 16):
         pad_chrs += bytes([i])
@@ -26,11 +28,13 @@ def strip_padding(plaintext):
 
 
 def profile_for(email):
+    """Generate profile from email."""
     email = email.replace("&", "").replace("=", "").encode("utf-8")
     return b"email=" + email + b"&uid=10&role=user"
 
 
 def encryption_oracle(email):
+    """Encryption oracle with email input."""
     plaintext = profile_for(email)
     plaintext = pkcs7(plaintext, 16)
     ciphertext = ECB(KEY).encrypt(plaintext)
@@ -38,6 +42,7 @@ def encryption_oracle(email):
 
 
 def decrypt(ciphertext):
+    """Decrypt ECB encrypted ciphertext."""
     plaintext = ECB(KEY).decrypt(ciphertext)
     return plaintext
 

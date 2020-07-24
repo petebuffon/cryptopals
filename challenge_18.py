@@ -1,4 +1,4 @@
-"""Implement CTR, the stream cipher mode"""
+"""Implement CTR, the stream cipher mode."""
 from base64 import b64decode
 from struct import pack
 from challenge_2 import xor
@@ -7,12 +7,15 @@ from challenge_7 import ECB
 
 
 class CTR:
-    """Allows encryption or decryption of plaintext/ciphertext using AES-128-CTR"""
+    """Encryption or decryption of plaintext/ciphertext using AES-128-CTR."""
+
     def __init__(self, key, nonce):
+        """Key and nonce""".
         self.key = key
         self.nonce = nonce
-    
+
     def encrypt(self, plaintext):
+        """Encrypt ciphertext with key using AES-128-CTR."""
         counter = 0
         ciphertext = b""
         c = chunks(plaintext, 16)
@@ -24,6 +27,7 @@ class CTR:
         return ciphertext
 
     def decrypt(self, ciphertext):
+        """Decrypt ciphertext with key using AES-128-CTR."""
         counter = 0
         plaintext = b""
         c = chunks(ciphertext, 16)

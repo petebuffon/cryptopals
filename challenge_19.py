@@ -1,4 +1,4 @@
-"""Break fixed-nonce CTR mode using substitutions"""
+"""Break fixed-nonce CTR mode using substitutions."""
 from base64 import b64decode
 from challenge_2 import xor
 from challenge_11 import generate_bytes
@@ -33,6 +33,7 @@ etaoin = {
 
 
 def score_keys(position):
+    """Score keys iterating over all possible keys (0-255)."""
     # iterate through all possible keys
     scores = {}
     for key in range(256):

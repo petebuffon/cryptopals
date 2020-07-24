@@ -1,9 +1,9 @@
-"""Fixed XOR"""
+"""Fixed XOR."""
 import sys
 
 
 def xor(buffer1, buffer2):
-    """Bitwise XOR"""
+    """Bitwise XOR."""
     if len(buffer1) != len(buffer2):
         print("Buffers must be of equal length")
         return exit(1)

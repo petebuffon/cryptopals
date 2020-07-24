@@ -1,4 +1,4 @@
-"""The CBC padding oracle"""
+"""The CBC padding oracle."""
 from secrets import choice
 from challenge_6 import chunks
 from challenge_9 import pkcs7
@@ -7,6 +7,7 @@ from challenge_11 import generate_bytes
 
 
 def padding_oracle():
+    """Padding oracle."""
     plaintexts = [
         "MDAwMDAwTm93IHRoYXQgdGhlIHBhcnR5IGlzIGp1bXBpbmc=",
         "MDAwMDAxV2l0aCB0aGUgYmFzcyBraWNrZWQgaW4gYW5kIHRoZSBWZWdhJ3MgYXJlIHB1bXBpbic=",
@@ -24,6 +25,7 @@ def padding_oracle():
 
 
 def padding_validation(ciphertext):
+    """PKCS#7 padding validation."""
     plaintext = CBC(KEY, IV).decrypt(ciphertext)[::-1]
     # valid padding
     for i in range(1, 17):
@@ -33,6 +35,7 @@ def padding_validation(ciphertext):
 
 
 def attack_block(ciphertext):
+    """Attack block using side-channel leak in padding oracle."""
     c2 = ciphertext[16:32]
     plaintext = b""
     dc_string = b""

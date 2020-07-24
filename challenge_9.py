@@ -1,8 +1,8 @@
-"""Implement PKCS#7 padding"""
+"""Implement PKCS#7 padding."""
 
 
 def pkcs7(plaintext, keysize):
-    """Add PKCS#7 padding to plaintext bytes object"""
+    """Add PKCS#7 padding to plaintext bytes object."""
     if len(plaintext) < keysize:
         pad = keysize - len(plaintext)
     elif len(plaintext) % keysize == 0:

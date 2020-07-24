@@ -1,11 +1,12 @@
-"""Single-byte XOR cipher"""
+"""Single-byte XOR cipher."""
 from challenge_2 import xor
 
 
 class KeyScore:
-    """Uses letter frequency analysis to return most likely key for single-character xor."""
+    """Uses letter frequency analysis to break single-character xor."""
 
     def __init__(self, ciphertext):
+        """Ciphertext to analyze for most likely single-character xor key."""
         self.ciphertext = ciphertext
         self.scores = {}
 
@@ -34,7 +35,7 @@ class KeyScore:
         self.score = self.scores[self.key]
 
     def print_scores(self):
-        """print scores for all keys"""
+        """Print scores for all keys."""
         num = 0
         print("{:<8} {:<12} {:<8}".format("Num", "Key", "Score"))
         for k, v in self.scores.items():
@@ -42,7 +43,7 @@ class KeyScore:
             num += 1
 
     def decrypt(self):
-        """decrypt plaintext using brute force"""
+        """Decrypt plaintext using brute force."""
         return xor(self.ciphertext, self.key * len(self.ciphertext))
 
 

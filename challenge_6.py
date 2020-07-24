@@ -1,12 +1,12 @@
-"""Break repeating-key XOR"""
+"""Break repeating-key XOR."""
 from challenge_2 import xor
 from challenge_3 import KeyScore
 import base64
 
 
 def edit_distance(buffer1, buffer2):
+    """Calculate edit distance between two buffers."""
     """
-    Calculate edit distance between two buffers.
     >>> edit_distance(b"this is a test", b"wokka wokka!!!")
     >>> 37
     """
@@ -18,8 +18,10 @@ def edit_distance(buffer1, buffer2):
 
 
 class KeySize:
-    """Calculates most likely keysize from ciphertext and keyrange"""
+    """Calculates most likely keysize using edit distance."""
+
     def __init__(self, ciphertext, keyrange):
+        """Ciphertext and range of key lengths."""
         self.ciphertext = ciphertext
         self.keyrange = keyrange
         # dict of keysizes and scores
@@ -30,16 +32,17 @@ class KeySize:
         self.keysize = min(self.keysizes, key=self.keysizes.get)
 
     def score_keysize(self, keysize):
-        """score keysize based on neighboring chunk edit distance"""
+        """Score keysize based on neighboring chunk edit distance."""
         sum = 0
         cnt = 0
+        ciphertext = self.ciphertext
         for i in range(0, len(self.ciphertext) - 2 * keysize, keysize):
-            sum += edit_distance(self.ciphertext[i:i+keysize], self.ciphertext[i+keysize:i+keysize*2]) / keysize
+            sum += edit_distance(ciphertext[i:i+keysize], ciphertext[i+keysize:i+keysize*2])/keysize
             cnt += 1
         return sum / cnt
 
     def print_scores(self):
-        """print scores for all keysizes in keyrange"""
+        """Print scores for all keysizes in keyrange."""
         sorted_keysizes = sorted(self.keysizes.items(), key=lambda x: x[1])
         print("{:<8} {:<8}".format("Keysize", "Edit Distance"))
         for k in sorted_keysizes:
@@ -47,16 +50,15 @@ class KeySize:
 
 
 def chunks(ciphertext, keysize):
-    """separate text into keysize chunks (list of chunks)"""
-    chunks = []
+    """Separate text into list of keysize chunks."""
+    c = []
     for i in range(0, len(ciphertext), keysize):
-        chunks.append(ciphertext[i: i + keysize])
-    return chunks
+        c.append(ciphertext[i: i + keysize])
+    return c
 
 
 def transpose(chunks, keysize):
-    """transpose list of chunks into a list of chunks associated with each character of a given
-    keysize"""
+    """Transpose list of chunks into list associated with each character of a given keysize."""
     transposed = []
     for i in range(keysize):
         transposed.append(b'')
@@ -67,8 +69,10 @@ def transpose(chunks, keysize):
 
 
 class BruteXor:
-    """Brute force ciphertext encrypted with repeating-key XOR"""
+    """Brute force ciphertext encrypted with repeating-key XOR."""
+
     def __init__(self, ciphertext, keyrange):
+        """Ciphertext and range of key lengths."""
         self.ciphertext = ciphertext
         self.keyrange = keyrange
         self.keysize = KeySize(self.ciphertext, self.keyrange).keysize
@@ -84,7 +88,7 @@ class BruteXor:
         self.plaintext = xor(self.full_key, self.ciphertext)
 
     def print_plaintext(self):
-        """plaintext line by line, decoded into strings"""
+        """Plaintext line by line, decoded into strings."""
         for line in self.plaintext.decode("utf-8").split("\n"):
             print(line)
 
@@ -94,3 +98,4 @@ with open("6.txt", "r") as file:
     ciphertext = base64.b64decode(ciphertext)
 
 brute_xor = BruteXor(ciphertext, range(2, 41))
+# print(brute_xor.print_plaintext)

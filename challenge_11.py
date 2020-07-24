@@ -1,4 +1,4 @@
-"""An ECB/CBC detection oracle"""
+"""An ECB/CBC detection oracle."""
 from secrets import randbits, choice
 from challenge_6 import chunks
 from challenge_7 import ECB
@@ -8,7 +8,7 @@ from challenge_10 import CBC
 
 
 def generate_bytes(n):
-    """generate n number of random bytes in a Byte object"""
+    """Generate n number of random bytes in a Byte object."""
     bstring = b""
     for i in range(n):
         bstring += bytes([randbits(8)])
@@ -16,6 +16,7 @@ def generate_bytes(n):
 
 
 def encryption_oracle(plaintext):
+    """Encryption oracle with text input."""
     keysize = 16
     plaintext = generate_bytes(choice(range(5, 11))) + plaintext
     plaintext += generate_bytes(choice(range(5, 11)))
@@ -32,6 +33,7 @@ def encryption_oracle(plaintext):
 
 
 def detect_ecb(oracle, keysize):
+    """Detect ECB encryption."""
     c = chunks(oracle(b"A"*100), keysize)
     if count_repeats(c) > 0:
         return True

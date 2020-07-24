@@ -1,7 +1,8 @@
-"""PKCS#7 padding validation"""
+"""PKCS#7 padding validation."""
 
 
 def padding_validation(plaintext):
+    """Check for valid PKCS#7 padding and strip padding."""
     # list of pad characters
     pad_chrs = ""
     for i in range(1, 17):

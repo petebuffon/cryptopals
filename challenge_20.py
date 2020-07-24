@@ -1,4 +1,4 @@
-"""Break fixed-nonce CTR statistically"""
+"""Break fixed-nonce CTR statistically."""
 from base64 import b64decode
 from challenge_2 import xor
 from challenge_11 import generate_bytes
@@ -33,7 +33,7 @@ etaoin = {
 
 
 def score_keys(position):
-    # iterate through all possible keys
+    """Iiterate through all possible keys."""
     scores = {}
     for key in range(256):
         key = bytes([key])
@@ -73,7 +73,7 @@ def score_keys_list(position):
 
 
 def print_scores(scores):
-    """print scores for all keys"""
+    """Print scores for all keys."""
     num = 0
     print("{:<12} {:<8}".format("Key", "Score"))
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
