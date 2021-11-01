@@ -1,5 +1,5 @@
 """Implement repeating-key XOR."""
-from challenge_2 import xor
+from challenge_02 import xor
 
 
 def repeating_key_xor_encrypt(plaintext, key):

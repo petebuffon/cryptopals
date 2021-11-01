@@ -1,7 +1,7 @@
 """Implement CBC mode."""
-from challenge_2 import xor
-from challenge_7 import ECB
-from challenge_6 import chunks
+from challenge_02 import xor
+from challenge_07 import ECB
+from challenge_06 import chunks
 import base64
 
 

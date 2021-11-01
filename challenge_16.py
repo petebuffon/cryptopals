@@ -1,5 +1,5 @@
 """CBC bitflipping attacks."""
-from challenge_9 import pkcs7
+from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
 from challenge_11 import generate_bytes
 
@@ -9,7 +9,7 @@ def encryption_oracle(your_string):
     plaintext = "comment1=cooking%20MCs;userdata=" + your_string
     plaintext += ";comment2=%20like%20a%20pound%20of%20bacon"
     plaintext = plaintext.replace(";", "").replace("=", "").encode("utf-8")
-    ciphertext = CBC(KEY, IV).encrypt(pkcs7(plaintext, 16))
+    ciphertext = CBC(KEY, IV).encrypt(pkcs7_pad(plaintext, 16))
     return ciphertext
 
 

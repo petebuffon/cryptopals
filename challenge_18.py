@@ -1,16 +1,16 @@
 """Implement CTR, the stream cipher mode."""
 from base64 import b64decode
 from struct import pack
-from challenge_2 import xor
-from challenge_6 import chunks
-from challenge_7 import ECB
+from challenge_02 import xor
+from challenge_06 import chunks
+from challenge_07 import ECB
 
 
 class CTR:
     """Encryption or decryption of plaintext/ciphertext using AES-128-CTR."""
 
     def __init__(self, key, nonce):
-        """Key and nonce""".
+        """Key and nonce."""
         self.key = key
         self.nonce = nonce
 

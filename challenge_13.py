@@ -1,6 +1,6 @@
 """ECB cut-and-paste."""
-from challenge_7 import ECB
-from challenge_9 import pkcs7
+from challenge_07 import ECB
+from challenge_09 import pkcs7_pad
 from challenge_11 import generate_bytes
 
 
@@ -36,7 +36,7 @@ def profile_for(email):
 def encryption_oracle(email):
     """Encryption oracle with email input."""
     plaintext = profile_for(email)
-    plaintext = pkcs7(plaintext, 16)
+    plaintext = pkcs7_pad(plaintext, 16)
     ciphertext = ECB(KEY).encrypt(plaintext)
     return ciphertext
 

@@ -1,8 +1,8 @@
 """Byte-at-a-time ECB decryption (Simple)."""
 from base64 import b64decode
-from challenge_6 import chunks
-from challenge_7 import ECB
-from challenge_9 import pkcs7
+from challenge_06 import chunks
+from challenge_07 import ECB
+from challenge_09 import pkcs7_pad
 from challenge_11 import generate_bytes, detect_ecb
 
 
@@ -12,7 +12,7 @@ def encryption_oracle(your_string):
     BjYW4gYmxvdwpUaGUgZ2lybGllcyBvbiBzdGFuZGJ5IHdhdmluZyBqdXN0IHRvIHNheSBoaQpEaWQgeW91IHN0b3A/IE5vL
     CBJIGp1c3QgZHJvdmUgYnkK""")
     plaintext = your_string + unknown_string
-    plaintext = pkcs7(plaintext, 16)
+    plaintext = pkcs7_pad(plaintext, 16)
     ciphertext = ECB(KEY).encrypt(plaintext)
     return ciphertext
 

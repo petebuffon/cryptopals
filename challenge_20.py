@@ -1,6 +1,6 @@
 """Break fixed-nonce CTR statistically."""
 from base64 import b64decode
-from challenge_2 import xor
+from challenge_02 import xor
 from challenge_11 import generate_bytes
 from challenge_18 import CTR
 

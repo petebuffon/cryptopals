@@ -1,9 +1,9 @@
 """An ECB/CBC detection oracle."""
 from secrets import randbits, choice
-from challenge_6 import chunks
-from challenge_7 import ECB
-from challenge_8 import count_repeats
-from challenge_9 import pkcs7
+from challenge_06 import chunks
+from challenge_07 import ECB
+from challenge_08 import count_repeats
+from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
 
 
@@ -20,7 +20,7 @@ def encryption_oracle(plaintext):
     keysize = 16
     plaintext = generate_bytes(choice(range(5, 11))) + plaintext
     plaintext += generate_bytes(choice(range(5, 11)))
-    plaintext = pkcs7(plaintext, keysize)
+    plaintext = pkcs7_pad(plaintext, keysize)
     key = generate_bytes(keysize)
 
     method = choice(range(0, 2))

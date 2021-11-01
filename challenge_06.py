@@ -1,6 +1,6 @@
 """Break repeating-key XOR."""
-from challenge_2 import xor
-from challenge_3 import KeyScore
+from challenge_02 import xor
+from challenge_03 import KeyScore
 import base64
 
 

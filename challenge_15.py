@@ -1,36 +1,16 @@
 """PKCS#7 padding validation."""
 
 
-def padding_validation(plaintext):
-    """Check for valid PKCS#7 padding and strip padding."""
-    # list of pad characters
-    pad_chrs = ""
-    for i in range(1, 17):
-        pad_chrs += chr(i)
-    # dictionary of proper padding strings
-    pad_dict = {}
-    for i in range(1, 17):
-        pad_dict[i] = chr(i) * i
-    text = ""
-    padding = ""
-    for c in plaintext:
-        if c in pad_chrs:
-            padding += c
-        else:
-            text += c
-    # check for proper padding
-    if len(text) < 16:
-        if padding != chr(16 - len(text)) * (16 - len(text)):
-            raise ValueError("Invalid PKCS#7 Padding")
-    elif len(text) % 16 == 0:
-        if padding != chr(16) * 16:
-            raise ValueError("Invalid PKCS#7 Padding")
+def pkcs7_unpad(padded, keysize):
+    """Remove PKCS#7 padding to padded bytes object."""
+    last_byte = padded[-1:]
+    if last_byte not in [bytes([i]) for i in range(1, 17)]:
+        raise ValueError("Invalid PKCS#7 Padding")
+    if padded[-last_byte[0]:] == last_byte * last_byte[0]:
+        return padded[:-last_byte[0]]
     else:
-        if padding != chr(16 - len(text) % 16) * (16 - len(text) % 16):
-            raise ValueError("Invalid PKCS#7 Padding")
-    # strip padding
-    return text
+        raise ValueError("Invalid PKCS#7 Padding")
 
 
-plaintext = "ICE ICE BABY\x04\x04\x04\x04"
-# print(padding_validation(plaintext))
+pt = b"ICE ICE BABY\x04\x04\x04\x04"
+# print(pkcs7_unpad(pt, 16))

@@ -1,5 +1,5 @@
 """Single-byte XOR cipher."""
-from challenge_2 import xor
+from challenge_02 import xor
 
 
 class KeyScore:

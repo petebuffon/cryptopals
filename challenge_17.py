@@ -1,7 +1,7 @@
 """The CBC padding oracle."""
 from secrets import choice
-from challenge_6 import chunks
-from challenge_9 import pkcs7
+from challenge_06 import chunks
+from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
 from challenge_11 import generate_bytes
 
@@ -21,7 +21,7 @@ def padding_oracle():
         "MDAwMDA5aXRoIG15IHJhZy10b3AgZG93biBzbyBteSBoYWlyIGNhbiBibG93"
     ]
     plaintext = plaintexts[choice(range(len(plaintexts)))].encode("utf-8")
-    return CBC(KEY, IV).encrypt(pkcs7(plaintext, 16))
+    return CBC(KEY, IV).encrypt(pkcs7_pad(plaintext, 16))
 
 
 def padding_validation(ciphertext):

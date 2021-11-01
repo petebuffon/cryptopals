@@ -3,18 +3,12 @@ import sys
 
 
 def xor(buffer1, buffer2):
-    """Bitwise XOR."""
     if len(buffer1) != len(buffer2):
-        print("Buffers must be of equal length")
-        return exit(1)
-    xor = b''
+        return sys.exit("buffers must be of equal length")
     try:
-        for i in range(len(buffer1)):
-            xor += bytes([buffer1[i] ^ buffer2[i]])
+        return bytearray([c1 ^ c2 for c1, c2 in zip(buffer1, buffer2)])
     except TypeError:
-        print("Buffers must be Byte objects")
-        return exit(1)
-    return xor
+        sys.exit("Buffers must be Byte objects")
 
 
 buffer1 = bytes.fromhex('1c0111001f010100061a024b53535009181c')

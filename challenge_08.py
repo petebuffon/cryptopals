@@ -1,5 +1,5 @@
 """Detect AES in ECB mode."""
-from challenge_6 import chunks
+from challenge_06 import chunks
 
 
 def count_repeats(text):
