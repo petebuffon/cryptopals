@@ -51,10 +51,8 @@ class KeySize:
 
 def chunks(ciphertext, keysize):
     """Separate text into list of keysize chunks."""
-    c = []
-    for i in range(0, len(ciphertext), keysize):
-        c.append(ciphertext[i: i + keysize])
-    return c
+    n = len(ciphertext)
+    return [ciphertext[i: i + keysize] for i in range(0, n, keysize)]
 
 
 def transpose(chunks, keysize):
@@ -93,9 +91,8 @@ class BruteXor:
             print(line)
 
 
-with open("6.txt", "r") as file:
-    ciphertext = file.read()
-    ciphertext = base64.b64decode(ciphertext)
-
-brute_xor = BruteXor(ciphertext, range(2, 41))
+# with open("6.txt", "r") as file:
+#     ciphertext = file.read()
+#     ciphertext = base64.b64decode(ciphertext)
+# brute_xor = BruteXor(ciphertext, range(2, 41))
 # print(brute_xor.print_plaintext)

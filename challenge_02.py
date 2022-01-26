@@ -11,7 +11,6 @@ def xor(buffer1, buffer2):
         sys.exit("Buffers must be Byte objects")
 
 
-buffer1 = bytes.fromhex('1c0111001f010100061a024b53535009181c')
-buffer2 = bytes.fromhex('686974207468652062756c6c277320657965')
-
+# buffer1 = bytes.fromhex('1c0111001f010100061a024b53535009181c')
+# buffer2 = bytes.fromhex('686974207468652062756c6c277320657965')
 # print(xor(buffer1, buffer2).hex())

@@ -32,10 +32,10 @@ def insert_text(text):
     return inserted_text + ciphertext[len(inserted_text):]
 
 
-ciphertext = encryption_oracle("*admin*true*")
-plaintext = "comment1cooking%20MCsuserdata*admin*true*comment2%20like%20a%20pound%20of%20bacon"
-KEY = generate_bytes(16)
-IV = generate_bytes(16)
+# ciphertext = encryption_oracle("*admin*true*")
+# plaintext = "comment1cooking%20MCsuserdata*admin*true*comment2%20like%20a%20pound%20of%20bacon"
+# KEY = generate_bytes(16)
+# IV = generate_bytes(16)
 
-ciphertext = insert_text(";admin=true;")
-print(admin_check(ciphertext))
+# ciphertext = insert_text(";admin=true;")
+# print(admin_check(ciphertext))

@@ -12,5 +12,5 @@ def pkcs7_unpad(padded, keysize):
         raise ValueError("Invalid PKCS#7 Padding")
 
 
-pt = b"ICE ICE BABY\x04\x04\x04\x04"
+# pt = b"ICE ICE BABY\x04\x04\x04\x04"
 # print(pkcs7_unpad(pt, 16))

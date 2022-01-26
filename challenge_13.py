@@ -47,7 +47,7 @@ def decrypt(ciphertext):
     return plaintext
 
 
-KEY = generate_bytes(16)
+# KEY = generate_bytes(16)
 
 # block_1: email=foo@gmail.
 # block_2: com&uid=10&role=
@@ -55,8 +55,8 @@ KEY = generate_bytes(16)
 # "email=" len = 6
 
 # generate admin profile with 13 character email address
-block_1 = encryption_oracle("foo@gmail.com")[0:16]
-block_2 = encryption_oracle("foo@gmail.com")[16:32]
-block_3 = encryption_oracle("A"*10+"admin"+"\x0b"*11)[16:32]
-ciphertext = block_1 + block_2 + block_3
+# block_1 = encryption_oracle("foo@gmail.com")[0:16]
+# block_2 = encryption_oracle("foo@gmail.com")[16:32]
+# block_3 = encryption_oracle("A"*10+"admin"+"\x0b"*11)[16:32]
+# ciphertext = block_1 + block_2 + block_3
 # print(parser(ciphertext))

@@ -30,7 +30,7 @@ with open("7.txt", "r") as file:
     ciphertext = file.read()
     ciphertext = base64.b64decode(ciphertext)
 
-key = b"YELLOW SUBMARINE"
-plaintext = ECB(key).decrypt(ciphertext).decode("utf-8")
+# key = b"YELLOW SUBMARINE"
+# plaintext = ECB(key).decrypt(ciphertext).decode("utf-8")
 # for line in plaintext.split("\n"):
 #    print(line)

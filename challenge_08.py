@@ -37,11 +37,10 @@ class DetectECB:
             print("{:<8} {:<8}".format(k[0], k[1]))
 
 
-with open("8.txt", "r") as file:
-    ciphertexts = []
-    for ciphertext in file:
-        ciphertexts.append(bytes.fromhex(ciphertext))
-
+# with open("8.txt", "r") as file:
+#     ciphertexts = []
+#     for ciphertext in file:
+#         ciphertexts.append(bytes.fromhex(ciphertext))
 # ecb = DetectECB(ciphertexts)
 # ecb.ciphertext
 # ecb.print_sorted()

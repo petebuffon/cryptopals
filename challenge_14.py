@@ -43,7 +43,6 @@ def extract_prefix_secret():
             return extract_secret(encryption_oracle, i, 16)
 
 
-KEY = generate_bytes(16)
-RANDOM_PREFIX = generate_bytes(16)
-
+# KEY = generate_bytes(16)
+# RANDOM_PREFIX = generate_bytes(16)
 # print(extract_prefix_secret())

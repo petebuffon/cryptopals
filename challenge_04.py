@@ -44,5 +44,5 @@ with open("4.txt", "r") as file:
     for ciphertext in file:
         ciphertexts.append(bytes.fromhex(ciphertext))
 
-detect_xor = DetectXor(ciphertexts)
+# detect_xor = DetectXor(ciphertexts)
 # print(detect_xor.ciphertext)

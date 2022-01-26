@@ -49,7 +49,7 @@ def extract_secret(oracle, keysize):
     return plaintext
 
 
-KEY = generate_bytes(16)
+# KEY = generate_bytes(16)
 # print(detect_blocksize(encryption_oracle))
 # print(detect_ecb(encryption_oracle, 16))
 # print(extract_secret(encryption_oracle, 16))

@@ -55,13 +55,12 @@ def attack_block(ciphertext):
     return plaintext[::-1]
 
 
-IV = generate_bytes(16)
-KEY = generate_bytes(16)
+# IV = generate_bytes(16)
+# KEY = generate_bytes(16)
 
-ciphertext = IV + padding_oracle()
-plaintext = b""
+# ciphertext = IV + padding_oracle()
+# plaintext = b""
 
-for i in range(0, len(ciphertext)-16, 16):
-    plaintext += attack_block(ciphertext[i:i+32])
-
-print(plaintext)
+# for i in range(0, len(ciphertext)-16, 16):
+#     plaintext += attack_block(ciphertext[i:i+32])
+# print(plaintext)

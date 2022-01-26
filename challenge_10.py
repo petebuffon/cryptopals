@@ -42,6 +42,6 @@ with open("10.txt", "r") as file:
     ciphertext = file.read()
     ciphertext = base64.b64decode(ciphertext)
 
-plaintext = CBC(key, iv).decrypt(ciphertext).decode("utf-8")
+# plaintext = CBC(key, iv).decrypt(ciphertext).decode("utf-8")
 # for line in plaintext.split("\n"):
 #    print(line)
