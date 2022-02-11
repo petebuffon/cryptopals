@@ -14,9 +14,8 @@ class CTR:
         self.key = key
         self.nonce = nonce
 
-    def encrypt(self, plaintext):
+    def encrypt(self, plaintext, counter=0):
         """Encrypt ciphertext with key using AES-128-CTR."""
-        counter = 0
         ciphertext = b""
         c = chunks(plaintext, 16)
         for chunk in c:
@@ -26,9 +25,8 @@ class CTR:
             counter += 1
         return ciphertext
 
-    def decrypt(self, ciphertext):
+    def decrypt(self, ciphertext, counter=0):
         """Decrypt ciphertext with key using AES-128-CTR."""
-        counter = 0
         plaintext = b""
         c = chunks(ciphertext, 16)
         for chunk in c:

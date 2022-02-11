@@ -1,4 +1,4 @@
-"""CBC bitflipping attacks."""
+"""CTR bitflipping"""
 from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
 
