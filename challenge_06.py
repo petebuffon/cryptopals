@@ -1,7 +1,7 @@
 """Break repeating-key XOR."""
+from base64 import b64decode
 from challenge_02 import xor
 from challenge_03 import KeyScore
-import base64
 
 
 def edit_distance(buffer1, buffer2):
@@ -93,6 +93,6 @@ class BruteXor:
 
 # with open("6.txt", "r") as file:
 #     ciphertext = file.read()
-#     ciphertext = base64.b64decode(ciphertext)
+#     ciphertext = b64decode(ciphertext)
 # brute_xor = BruteXor(ciphertext, range(2, 41))
 # print(brute_xor.print_plaintext)

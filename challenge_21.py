@@ -23,7 +23,7 @@ class MT19937():
     def extract_number(self):
         """Extract a tempered value calling twist() every n numbers."""
         if self.index >= self.n:
-            index = self.twist()
+            self.twist()
 
         y = self.MT[self.index]
         y = y ^ ((y >> self.u) & self.d)

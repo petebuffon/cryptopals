@@ -17,7 +17,7 @@ class DetectECB:
         self.scores = []
         cnt = 1
         for ciphertext in self.ciphertexts:
-            c = chunks(line, self.keysize)
+            c = chunks(ciphertext, self.keysize)
             self.scores.append((cnt, count_repeats(c)))
             cnt += 1
         # most likely ciphertext encrypted with AES-128-ECB

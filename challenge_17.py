@@ -1,9 +1,8 @@
 """The CBC padding oracle."""
+from os import urandom
 from secrets import choice
-from challenge_06 import chunks
 from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
-from challenge_11 import generate_bytes
 
 
 def padding_oracle():
@@ -55,8 +54,8 @@ def attack_block(ciphertext):
     return plaintext[::-1]
 
 
-# IV = generate_bytes(16)
-# KEY = generate_bytes(16)
+# IV = urandom(16)
+# KEY = urandom(16)
 
 # ciphertext = IV + padding_oracle()
 # plaintext = b""

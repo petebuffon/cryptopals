@@ -17,13 +17,11 @@ class ECB:
         """Encrypt ciphertext with key using AES-128-ECB."""
         encryptor = self.cipher.encryptor()
         return encryptor.update(plaintext) + encryptor.finalize()
-        # return encryptor.update(plaintext)
 
     def decrypt(self, ciphertext):
         """Decrypt ciphertext with key using AES-128-ECB."""
         decryptor = self.cipher.decryptor()
         return decryptor.update(ciphertext) + decryptor.finalize()
-        # return decryptor.update(ciphertext)
 
 
 with open("7.txt", "r") as file:

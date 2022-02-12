@@ -1,5 +1,6 @@
 """An ECB/CBC detection oracle."""
-from secrets import randbits, choice
+from os import urandom
+from secrets import choice
 from challenge_06 import chunks
 from challenge_07 import ECB
 from challenge_08 import count_repeats
@@ -7,27 +8,19 @@ from challenge_09 import pkcs7_pad
 from challenge_10 import CBC
 
 
-def generate_bytes(n):
-    """Generate n number of random bytes in a Byte object."""
-    bstring = b""
-    for i in range(n):
-        bstring += bytes([randbits(8)])
-    return bstring
-
-
 def encryption_oracle(plaintext):
     """Encryption oracle with text input."""
     keysize = 16
-    plaintext = generate_bytes(choice(range(5, 11))) + plaintext
-    plaintext += generate_bytes(choice(range(5, 11)))
+    plaintext = urandom(choice(range(5, 11))) + plaintext
+    plaintext += urandom(choice(range(5, 11)))
     plaintext = pkcs7_pad(plaintext, keysize)
-    key = generate_bytes(keysize)
+    key = urandom(keysize)
 
     method = choice(range(0, 2))
     if method == 0:
         ciphertext = ECB(key).encrypt(plaintext)
     else:
-        ciphertext = CBC(key, generate_bytes(keysize)).encrypt(plaintext)
+        ciphertext = CBC(key, urandom(keysize)).encrypt(plaintext)
 
     return ciphertext
 

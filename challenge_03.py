@@ -2,10 +2,6 @@
 from challenge_02 import xor
 from string import printable
 
-"""
-            b"e": 13, b" ": 12, b"t": 11, b"a": 10, b"o": 9, b"i": 8, b"n": 7, b"s": 6, b"h": 5,
-            b"r": 4, b"d": 3, b"l": 2, b"u": 1
-"""
 
 class KeyScore:
     """Uses letter frequency analysis to break single-character xor."""

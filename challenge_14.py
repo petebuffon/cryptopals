@@ -1,10 +1,8 @@
 """Byte-at-a-time ECB decryption (Harder)."""
+from os import urandom
 from base64 import b64decode
-from secrets import choice
-from challenge_06 import chunks
 from challenge_07 import ECB
 from challenge_09 import pkcs7_pad
-from challenge_11 import generate_bytes, detect_ecb
 
 
 def encryption_oracle(your_string):
@@ -43,6 +41,6 @@ def extract_prefix_secret():
             return extract_secret(encryption_oracle, i, 16)
 
 
-# KEY = generate_bytes(16)
-# RANDOM_PREFIX = generate_bytes(16)
+# KEY = urandom(16)
+# RANDOM_PREFIX = urandom(16)
 # print(extract_prefix_secret())

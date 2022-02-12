@@ -1,9 +1,9 @@
 """Break fixed-nonce CTR statistically."""
+from os import urandom
 from base64 import b64decode
 from challenge_02 import xor
 from challenge_03 import KeyScore
 from challenge_06 import transpose
-from challenge_11 import generate_bytes
 from challenge_18 import CTR
 
 
@@ -19,7 +19,7 @@ def brute_ctr(ciphertext, keysize):
 
 
 # encrypt lines in file
-KEY = generate_bytes(16)
+KEY = urandom(16)
 NONCE = b"\x00\x00\x00\x00\x00\x00\x00\x00"
 COUNTER = 0
 ciphertexts = []
@@ -34,7 +34,7 @@ n = min(len(ciphertext) for ciphertext in ciphertexts)
 truncated = [ciphertext[:n] for ciphertext in ciphertexts]
 transposed = transpose(truncated, 53)
 
-keystream = brute_ctr(transposed, n)
-plaintext = [xor(chunk, keystream) for chunk in truncated]
-for line in plaintext:
-    print(line.decode())
+# keystream = brute_ctr(transposed, n)
+# plaintext = [xor(chunk, keystream) for chunk in truncated]
+# for line in plaintext:
+#     print(line.decode())

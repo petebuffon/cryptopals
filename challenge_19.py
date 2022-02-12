@@ -1,10 +1,10 @@
 """Break fixed-nonce CTR mode using substitutions."""
+from os import urandom
 from base64 import b64decode
 from challenge_02 import xor
-from challenge_11 import generate_bytes
 from challenge_18 import CTR
 
-KEY = generate_bytes(16)
+KEY = urandom(16)
 NONCE = b"\x00\x00\x00\x00\x00\x00\x00\x00"
 
 ciphertexts = []

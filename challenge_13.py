@@ -1,7 +1,7 @@
 """ECB cut-and-paste."""
+from os import urandom
 from challenge_07 import ECB
 from challenge_09 import pkcs7_pad
-from challenge_11 import generate_bytes
 
 
 def parser(ciphertext):
@@ -47,7 +47,7 @@ def decrypt(ciphertext):
     return plaintext
 
 
-# KEY = generate_bytes(16)
+# KEY = urandom(16)
 
 # block_1: email=foo@gmail.
 # block_2: com&uid=10&role=

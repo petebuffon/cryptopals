@@ -1,9 +1,9 @@
 """Byte-at-a-time ECB decryption (Simple)."""
+from os import urandom
 from base64 import b64decode
-from challenge_06 import chunks
 from challenge_07 import ECB
 from challenge_09 import pkcs7_pad
-from challenge_11 import generate_bytes, detect_ecb
+from challenge_11 import detect_ecb
 
 
 def encryption_oracle(your_string):
@@ -49,7 +49,7 @@ def extract_secret(oracle, keysize):
     return plaintext
 
 
-# KEY = generate_bytes(16)
+# KEY = urandom(16)
 # print(detect_blocksize(encryption_oracle))
 # print(detect_ecb(encryption_oracle, 16))
 # print(extract_secret(encryption_oracle, 16))

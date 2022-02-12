@@ -1,6 +1,5 @@
 """Detect single-character XOR."""
 from challenge_03 import KeyScore
-from challenge_02 import xor
 
 
 class DetectXor:
