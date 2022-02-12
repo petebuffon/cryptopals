@@ -1,4 +1,8 @@
 def sha1(data):
+    """Python3 implementation of SHA1
+    >>> sha1("Hello world!")
+    'd3486ae9136e7856bc42212385ea797094475802'
+    """
     bytes = ""
 
     h0 = 0x67452301
@@ -11,7 +15,6 @@ def sha1(data):
         bytes+='{0:08b}'.format(ord(data[n]))
     bits = bytes+"1"
     pBits = bits
-    print(pBits)
     #pad until length equals 448 mod 512
     while len(pBits)%512 != 448:
         pBits+="0"
