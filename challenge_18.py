@@ -37,8 +37,7 @@ class CTR:
         return plaintext
 
 
-ciphertext = b64decode("L77na/nrFsKvynd6HzOoG7GHTLXsTVu9qvY/2syLXzhPweyyMTJULu/6/kXX0KSvoOLSFQ==")
-KEY = b"YELLOW SUBMARINE"
-NONCE = b"\x00\x00\x00\x00\x00\x00\x00\x00"
-
+# ciphertext = b64decode("L77na/nrFsKvynd6HzOoG7GHTLXsTVu9qvY/2syLXzhPweyyMTJULu/6/kXX0KSvoOLSFQ==")
+# KEY = b"YELLOW SUBMARINE"
+# NONCE = b"\x00\x00\x00\x00\x00\x00\x00\x00"
 # print(CTR(KEY, NONCE).decrypt(ciphertext))

@@ -5,23 +5,21 @@ from cryptography.hazmat.backends import default_backend
 
 
 class ECB:
-    """Allows encryption or decryption of plaintext/ciphertext using AES-128-ECB."""
 
     def __init__(self, key):
-        """16, 24, or 32 byte key."""
-        self.key = key
-        self.backend = default_backend()
-        self.cipher = Cipher(algorithms.AES(self.key), modes.ECB(), backend=self.backend)
+        """Allows encryption or decryption of plaintext/ciphertext using AES-128-ECB."""
+        self.cipher = Cipher(algorithms.AES(key), modes.ECB())
 
     def encrypt(self, plaintext):
         """Encrypt ciphertext with key using AES-128-ECB."""
         encryptor = self.cipher.encryptor()
-        return encryptor.update(plaintext) + encryptor.finalize()
-
+        # return encryptor.update(plaintext) + encryptor.finalize()
+        return encryptor.update(plaintext)
+    
     def decrypt(self, ciphertext):
         """Decrypt ciphertext with key using AES-128-ECB."""
         decryptor = self.cipher.decryptor()
-        return decryptor.update(ciphertext) + decryptor.finalize()
+        return decryptor.update(ciphertext)
 
 
 with open("7.txt", "r") as file:

@@ -32,10 +32,9 @@ def insert_text(text):
     return inserted_text + ciphertext[len(inserted_text):]
 
 
-# ciphertext = encryption_oracle("*admin*true*")
-# plaintext = "comment1cooking%20MCsuserdata*admin*true*comment2%20like%20a%20pound%20of%20bacon"
 # KEY = urandom(16)
 # IV = urandom(16)
-
+# ciphertext = encryption_oracle("*admin*true*")
+# plaintext = "comment1cooking%20MCsuserdata*admin*true*comment2%20like%20a%20pound%20of%20bacon"
 # ciphertext = insert_text(";admin=true;")
 # print(admin_check(ciphertext))
